@@ -14,7 +14,7 @@ e.primer_apellido AS primer_apellido,
 e.id_nivel AS id_nivel,
 n.desc_puesto AS desc_puesto 
 from empleados e 
-join rrhh_umami.ZONA Z 
+join rrhh_umami.zona Z 
 on e.id_zona = z.id_zona 
 join rrhh_umami.nivel n 
 on e.id_nivel = n.id_nivel
