@@ -44,7 +44,7 @@ El área de Recursos Humanos de la empresa UMAMI necesita una base de datos para
 
 ## Diagrama Entidad-Relación
 
-<img src="C:\Users\Tap\Desktop\TEST GIT" style="width: 60% ; aspect-ratio:16/9">
+<img src="/workspaces/TP_SQL/Imagen de WhatsApp 2024-05-28 a las 23.16.13_008c6822.jpg" style="width: 60% ; aspect-ratio:16/9">
 
 ![Diagrama Entidad-Relación](https://github.com/eugenemariotto/TP_SQL/blob/main/der%20version%20final.png)
 
