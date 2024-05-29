@@ -1,4 +1,4 @@
-# TP_SQL# TP_SQL
+TP_SQL
 
 <center>
 <img src="https://objetivo.news/download/multimedia.normal.bcba10cea1861629.Y29kZXJob3VzZS1xdWUtZXMtcXVlLWhhY2VuX25vcm1hbC53ZWJw.webp" style="width: 100% ; aspect-ratio:16/9">
@@ -574,38 +574,6 @@ También se puede generar un backup a través del comando `make backup-db` que p
     - `make backup-db` para realizar un backup de la base de datos
     - `make access-db` para acceder a la base de datos
 
----
-
-[<- volver al índice](#indice)
-
----
-
-## Formato de Entrega 
-
-El proyecto final de la base de datos control_inventario se entraga por medio de un link a un repositorio GitHub. el cual está conformado por las siguientes subcarpetas y archivos:
-
-repositorio : coderhouse_sql_entrega_final
-    
-    subcarpeta backup:
-        backup_sql.sql
-
-    
-    subcarpeta objects:
-        functions.sql
-        triggers.sql
-        stored_procedures.sql
-        views.sql
-        roles_users.sql    
-    
-    subcarpeta structure:
-        database_structure.sql
-        population.sql
-
-    docker-compose.yml
-    env.txt
-    Makefile.txt
-    README.md
-    wait_docker.sh
 
 ---
 
