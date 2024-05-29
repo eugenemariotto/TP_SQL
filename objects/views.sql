@@ -1,4 +1,4 @@
-USE rrhh_rrhh_umami;
+USE rrhh_umami;
 -- VIEWS ---------------------------------------
 CREATE OR REPLACE VIEW bajas_ano AS 
 select e.ID_EMPLEADO AS ID_EMPLEADO,
