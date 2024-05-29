@@ -1,4 +1,4 @@
-USE rrhh_umami;
+USE rrhh_rrhh_umami;
 -- VIEWS ---------------------------------------
 CREATE OR REPLACE VIEW bajas_ano AS 
 select e.ID_EMPLEADO AS ID_EMPLEADO,
@@ -14,9 +14,9 @@ e.PRIMER_APELLIDO AS PRIMER_APELLIDO,
 e.ID_NIVEL AS ID_NIVEL,
 n.DESC_PUESTO AS DESC_PUESTO 
 from empleados e 
-join umami.ZONA Z 
+join rrhh_umami.ZONA Z 
 on e.ID_ZONA = z.ID_ZONA 
-join umami.nivel n 
+join rrhh_umami.nivel n 
 on e.ID_NIVEL = n.ID_NIVEL
 where z.DESC_ZONA = 'CABA';
 
@@ -26,8 +26,8 @@ e.PRIMER_NOMBRE AS PRIMER_NOMBRE,
 e.PRIMER_APELLIDO AS PRIMER_APELLIDO,
 a.DESC_AREA AS DESC_AREA,
 ev.EVALUADO_POR AS EVALUADOR 
-from umami.empleados e 
-join umami.area a 
+from rrhh_umami.empleados e 
+join rrhh_umami.area a 
 on e.ID_AREA = a.ID_AREA 
 join evaluacion ev 
 on e.ID_EMPLEADO = ev.ID_EMPLEADO;
@@ -39,7 +39,7 @@ e.PRIMER_APELLIDO AS PRIMER_APELLIDO,
 r.FECHA_DE_BAJA AS FECHA_DE_BAJA,
 r.ID_BAJA AS ID_BAJA 
 from empleados e 
-join umami.rotacion r 
+join rrhh_umami.rotacion r 
 on e.ID_EMPLEADO = r.ID_EMPLEADO;
 
 CREATE VIEW vista_empleados_completa AS
