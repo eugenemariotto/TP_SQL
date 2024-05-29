@@ -1,14 +1,8 @@
+-- hhrr_umami
+
 DROP SCHEMA IF EXISTS rrhh_umami;
 CREATE DATABASE rrhh_umami;
 USE rrhh_umami;
-
--- drop table if exists clientes;
-CREATE TABLE clientes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50),
-    apellido VARCHAR(50),
-    edad INT
-);
 
 -- DROP TABLE IF EXISTS area;
 CREATE TABLE area (
@@ -119,4 +113,3 @@ CREATE TABLE ajustes (
 	PRIMARY KEY (id_sueldo),
 	CONSTRAINT fk_ajustes_empleados FOREIGN KEY (id_empleado) REFERENCES empleados (id_empleado)
 ) ;
-

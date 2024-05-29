@@ -25,14 +25,20 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP TRIGGER if exists beforeempleadodelete;
+use rrhh_umami;
+DROP PROCEDURE IF EXISTS registrarevaluacion;
+
 DELIMITER //
-CREATE TRIGGER beforeempleadodelete
-BEFORE DELETE ON empleados
-FOR EACH ROW
+
+CREATE PROCEDURE registrarevaluacion (
+    IN p_id_empleado INT,
+    IN p_fecha_eval DATE,
+    IN p_resultado_evaluacion INT,
+    IN p_evaluado_por INT
+)
 BEGIN
-    INSERT INTO rotacion (id_empleado, fecha_de_baja)
-    VALUES (OLD.id_empleado, CURDATE());
+    INSERT INTO evaluacion (id_eval, fecha_eval, resultado_evaluacion, id_empleado, evaluado_por)
+    VALUES (NULL, p_fecha_eval, p_resultado_evaluacion, p_id_empleado, p_evaluado_por);
 END //
 
 DELIMITER ;

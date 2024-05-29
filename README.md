@@ -1,411 +1,614 @@
-# TP_SQL
-TP UMAMI
-Aguante boca
+# TP_SQL# TP_SQL
 
-Entrega final - Curso SQL Coderhouse
-Alumno: Eugenia Alejandra Mariotto
+<center>
+<img src="https://objetivo.news/download/multimedia.normal.bcba10cea1861629.Y29kZXJob3VzZS1xdWUtZXMtcXVlLWhhY2VuX25vcm1hbC53ZWJw.webp" style="width: 100% ; aspect-ratio:16/9">
+</center>
 
-Comision: 53180
 
-Profesor: Anderson Michel Ocaña Torres
+# <center>Entrega de Proyecto Final - SQL </center>
+**Estudiante:** Eugenia Mariotto
 
-Tutor: Carla Palermo
+**Comisión:** 53180
 
-Índice
-Introducción
-Temática del proyecto
-Modelo de Negocio
-Diagrama Entidad-Relación (DER)
-Listado de tablas y descripción
-Estructura e ingesta de datos
-Documentación de Vistas
-Documentación de Funciones
-Documentación de Procedimientos Almacenados
-Documentación de Triggers
-Roles y permisos
-Back up de la base de datos
-Glosario
-Herramientas y tecnologias usadas
-Como levantar el proyecto en CodeSpaces GitHub
-Introducción
-Este proyecto fue desarrollado en el marco del curso de SQL impartido por Coderhouse. Durante el curso, aprendimos a implementar los distintos componentes del lenguaje SQL, incluyendo DCL (Data Control Language), DML (Data Manipulation Language), DDL (Data Definition Language) y TCL (Transaction Control Language).
+**Tutora:** Carla Palermo
 
-En este README se detallarán las tablas, funciones, triggers, vistas, procedimientos almacenados y demás componentes para ayudar a comprender la estructura de la base de datos, el por qué de su implementación y cuál es su utilidad.
+**Docente:** Anderson Ocaña 
 
-Este proyecto no solo muestra la aplicación práctica de SQL, sino también cómo una base de datos bien diseñada puede servir como una herramienta poderosa para la toma de decisiones estratégicas y operativas.
+---
 
-Temática del proyecto
-Este proyecto se centra en la Gestión de datos de información de empleados para el área de Recursos Humanos. A través de la implementación de una base de datos en MySQL, el proyecto busca ofrecer una solución integral para almacenar, procesar y analizar la información financiera de los clientes.
+## Indice
 
-En esencia, este proyecto proporciona una base de datos robusta y eficiente para la gestión del riesgo crediticio, permitiendo a las instituciones financieras optimizar sus procesos de evaluación y seguimiento, y reducir la exposición a riesgos financieros.
+ - [Temática del Proyecto](#temática-del-proyecto)
+ - [Modelo de Negocio](#modelo-de-negocio)
+ - [Diagrama Entidad-Relación](#diagrama-entidad-relación)
+ - [Listado de Tablas y Descripción](#listado-de-tablas-y-descripción)
+ - [Ingesta de Datos](#ingesta-de-datos)
+ - [Objetos de la Base de Datos](#objetos-de-la-base-de-datos)
+   - [Documentación de Funciones](#documentación-de-funciones)
+   - [Documentación de Triggers](#documentación-de-triggers)
+   - [Documentación de Procedimientos Almacenados](#documentación-de-procedimientos-almacenados)
+   - [Documentación de Vistas](#documentación-de-vistas)
+   - [Roles, Permisos y Usuarios](#roles-permisos-y-usuarios)
+ - [Backup de la Base de Datos](#backup-de-la-base-de-datos)
+ - [Herramientas y Tecnologías Usadas](#herramientas-y-tecnologías-usadas)
+ - [Instrucciones para Levantar el Proyecto en CodeSpaces GitHub](#instrucciones-para-levantar-el-proyecto-en-codespaces-github)
+ - [Formato de Entrega](#formato-de-entrega)
 
-Modelo de Negocio
-Gestión de Clientes
-La base de datos debe permitir registrar y gestionar la información de los empleados, incluyendo datos personales como nombre, dirección, contacto y detalles financieros. Esto es crucial para evaluar el riesgo crediticio y tomar decisiones informadas sobre la concesión de préstamos y otros productos financieros.
+---
 
-Gestión de Cuentas
-Es fundamental llevar un registro detallado de los movimientos de los empleados, que incluya el tipo de cuenta (ahorro, corriente, etc.), el saldo actual y la fecha de apertura. La base de datos debe facilitar la creación automática de cuentas de ahorro para nuevos clientes y la actualización de saldos en función de las transacciones realizadas.
+## Temática del Proyecto
 
-Gestión de Préstamos
-La base de datos debe gestionar información detallada sobre los préstamos otorgados, incluyendo el monto del préstamo, la tasa de interés, el plazo, el estado del préstamo (activo o inactivo) y la fecha (en caso de que el préstamo haya sido pagado). Esto permitirá evaluar el rendimiento de los préstamos y gestionar el riesgo de impagos.
+El área de Recursos Humanos de la empresa UMAMI necesita una base de datos para procesar la información de sus empleados. Esta empresa está situada en distintas ubicaciones del país y tiene más de 5000 empleados, es por esto que se decide utilizar SQL para almacenar más información de forma más práctica.
 
-Registro de Transacciones
-Es esencial tener un registro detallado de todas las transacciones realizadas por los clientes, incluyendo depósitos, retiros y pagos de préstamos. La base de datos debe actualizar automáticamente el saldo de las cuentas en función de estas transacciones y validar la integridad de los datos ingresados.
+---
 
-Evaluación del Riesgo Crediticio
-La base de datos debe almacenar y gestionar el puntaje crediticio de los clientes y monitorear los clientes con historial crediticio considerado malo para brindar el seguimiento adecuado.
+## Diagrama Entidad-Relación
 
-Monitorización de Cuentas con Saldo Negativo
-La base de datos debe permitir la identificación rápida de cuentas con saldo negativo, ayudando a los departamentos de riesgo a tomar medidas preventivas o correctivas.
+<img src="C:\Users\Tap\Desktop\TEST GIT" style="width: 60% ; aspect-ratio:16/9">
 
-Generación de Informes
-La base de datos debe soportar la generación de informes detallados sobre la situación financiera de los clientes, el estado de los préstamos y el riesgo crediticio general. Estos informes son cruciales para la toma de decisiones estratégicas y operativas.
+![Diagrama Entidad-Relación](https://github.com/eugenemariotto/TP_SQL/blob/main/der%20version%20final.png)
 
-Diagrama Entidad-Relación (DER)
-DER
+---
 
-Listado de tablas y descripción
-Tabla Clientes
-Esta tabla contiene información personal de los clientes como sus nombres, la dirección de sus domicilios, correo electrónico, número de teléfono, entre otros.
+[<- volver al índice](#indice)
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Cliente_ID	ID del cliente	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Nombre	Nombre	VARCHAR(100)	-
-Apellido	Apellido	VARCHAR(100)	-
-Direccion	Dirección	VARCHAR(255)	-
-Telefono	Teléfono	VARCHAR(20)	-
-Correo	Correo Electrónico	VARCHAR(100)	-
-Tabla Cuentas
-Esta tabla almacena detalles sobre las cuentas que los clientes poseen con la institución financiera como el número de cuenta, tipo de cuenta (corriente o de ahorro), saldo, fecha de apertura, entre otros.
+---
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Cuentas_ID	ID de las cuentas	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Cliente_ID	ID del Cliente	INT	Clave Foránea
-Numero	Número de Cuenta	VARCHAR(20)	-
-Tipo	Tipo de Cuenta	VARCHAR(50)	-
-Saldo	Saldo	DECIMAL(10,2)	-
-FechaApertura	Fecha de Apertura	DATE	-
-Tabla Transacciones
-Esta tabla registra todas las transacciones que efectúan los clientes, incluyendo la fecha, el monto, tipo de transacción (depósito, retiro, transferencia o transferencia (sobregiro)) y cualquier otro tipo de información relevante.
+## Listado de Tablas y Descripción
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Transacciones_ID	ID de las transacciones	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Cuentas_ID	ID de las cuentas	INT	Clave Fóranea
-Tipo	Tipo de Transacción	VARCHAR(50)	-
-Monto	Monto de Transacción	DECIMAL(10,2)	-
-Fecha	Fecha de Transacción	DATE	-
-Tabla Prestamos
-En esta tabla se almacena toda la información de los préstamos otorgados a los clientes, incluyendo el monto del préstamo, la tasa de interés, el plazo, el estado (activo, vencido, inactivo, etc) y cualquier garantía asociada a los mismos.
+El script para la creación y definición de la base de datos se encuentra en el archivo database_structure.sql, ubicado en la carpeta structure.
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Prestamos_ID	ID de los préstamos	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Cliente_ID	ID del Cliente	INT	Clave Foránea
-Monto	Monto del Préstamo	DECIMAL(10,2)	-
-TasaInteres	Tasa de Interés	DECIMAL(5,2)	-
-Plazo	Plazo del Préstamo	INT	-
-Estado	Estado del Préstamo	VARCHAR(50)	-
-Tabla Pagos_Prestamos
-Esta tabla registra todos los pagos realizados por los clientes en relación con sus préstamos, incluyendo la fecha del pago, el monto, entre otros datos relevantes.
+A continuación se presenta la descripción de cada una de las tablas de la base de datos.
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Pagos_Prest_ID	ID de pagos de préstamos	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Prestamos_ID	ID de los préstamos	INT	Clave Foránea
-Monto	Monto del Pago	DECIMAL(10,2)	-
-Fecha	Fecha del Pago	DATE	-
-Tabla Historial_Credito
-Esta tabla contiene información sobre el historial crediticio de los clientes como los puntajes de crédito y las observaciones correspondientes.
+---
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Hist_Credito_ID	ID del historial crediticio	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Cliente_ID	ID del Cliente	INT	Clave Foránea
-Puntaje	Puntaje de Crédito	INT	-
-Observaciones	Observaciones	TEXT	-
-Tabla Modelos_Riesgo
-Esta tabla almacena los modelos de riesgo utilizados para evaluar la solvencia crediticia de los clientes, incluyendo los coeficientes de los modelos, los parámetros utilizados, entre otros.
+### Tabla `area`
+| Campo      | Tipo         | Null | Key  | Default | Extra             |
+|------------|--------------|------|------|---------|--------------------|
+| id_area    | INT          | NO   | PRI  | NULL    |                    |
+| banda      | INT          | NO   |      | NULL    |                    |
+| desc_area  | VARCHAR(50)  | YES  |      | NULL    |                    |
 
-Esta tabla es independiente del resto ya que su fin es almacenar información. La misma se trabajaría en conjunto con un equipo de cientificos de datos para que puedan llevar a cabo los correspondientes modelos predictivos.
+### Tabla `contrato`
+| Campo          | Tipo         | Null | Key  | Default | Extra             |
+|----------------|--------------|------|------|---------|--------------------|
+| id_contrato    | INT          | NO   | PRI  | NULL    |                    |
+| desc_contrato  | VARCHAR(50)  | YES  |      | NULL    |                    |
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Mod_Riesgo_ID	ID de modelos de riesgo	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Nombre	Nombre del Modelo	VARCHAR(100)	-
-Descripción	Descripción del Modelo	TEXT	-
-Coeficientes	Coeficientes del Modelo	TEXT	-
-Tabla Eventos_Riesgo
-Esta tabla registra cualquier evento de riesgo relevante como pagos atrasados, actividad sospechosa en la cuenta, cambios en el puntaje del crédito, entre otros.
+### Tabla `zona`
+| Campo        | Tipo         | Null | Key  | Default | Extra             |
+|--------------|--------------|------|------|---------|--------------------|
+| id_zona      | INT          | NO   | PRI  | NULL    |                    |
+| desc_zona    | VARCHAR(50)  | YES  |      | NULL    |                    |
 
-Esta tabla es independiente del resto ya que su finalidad es almacenar información.
+### Tabla `nivel`
+| Campo        | Tipo         | Null | Key  | Default | Extra             |
+|--------------|--------------|------|------|---------|--------------------|
+| id_nivel     | INT          | NO   | PRI  | NULL    |                    |
+| banda        | INT          | NO   |      | NULL    |                    |
+| desc_puesto  | VARCHAR(50)  | YES  |      | NULL    |                    |
+| minima       | DOUBLE       | NO   |      | NULL    |                    |
+| maxima       | DOUBLE       | NO   |      | NULL    |                    |
 
-Abreviatura	Nombre Completo	Tipo de Datos	Tipo de Clave
-Even_Riesgo_ID	ID de eventos de riesgo	INT NOT NULL AUTO_INCREMENT	Clave Primaria
-Descripción	Descripción del Evento	TEXT	-
-Fecha	Fecha del Evento	DATE	-
-Estructura e ingesta de datos
-Se realiza en su totalidad por medio del archivo population.sql.
-Documentación de Vistas
-VistaClienteSaldoNegativo
-Descripción y tablas involucradas:
+### Tabla `empleados`
+| Campo              | Tipo          | Null         | Key  | Default                | Extra             |
+|--------------------|---------------|--------------|------|------------------------|--------------------|
+| id_empleado        | INT           | NO           | PK   | NULL                   | auto_increment     |
+| primer_nombre      | VARCHAR(50)   | NO           |      | NULL                   |                    |
+| segundo_nombre     | VARCHAR(50)   | YES          |      | NULL                   |                    |
+| primer_apellido    | VARCHAR(50)   | NO           |      | NULL                   |                    |
+| segundo_apellido   | VARCHAR(50)   | YES          |      | NULL                   |                    |
+| dni                | VARCHAR(20)   | NO           |      | NULL                   |                    |
+| cuil               | VARCHAR(20)   | NO           |      | NULL                   |                    |
+| genero             | ENUM('F','M','No binario')   | NO   | NULL                   |                    |
+| calle              | VARCHAR(50)   | NO           |      | NULL                   |                    |
+| numeracion         | VARCHAR(50)   | NO           |      | NULL                   |                    |
+| piso               | VARCHAR(50)   | YES          |      | NULL                   |                    |
+| departamento       | VARCHAR(50)   | YES          |      | NULL                   |                    |
+| codigo_postal      | INT           | YES          |      | NULL                   |                    |
+| ciudad             | VARCHAR(50)   | NO           |      | NULL                   |                    |
+| email              | VARCHAR(50)   | NO           | UNI  | NULL                   |                    |
+| fecha_de_nacimiento| DATE          | YES          |      | NULL                   |                    |
+| fecha_alta         | DATE          | YES          |      | NULL                   |                    |
+| tipo_de_empleados  | ENUM('C Level','Líder','Team Player') | YES | NULL  |                    |
+| id_nivel           | INT           | NO           | FK   | NULL                   |                    |
+| id_area            | INT           | NO           | FK   | NULL                   |                    |
+| id_contrato        | INT           | NO           | FK   | NULL                   |                    |
+| id_zona            | INT           | NO           | FK   | NULL                   |                    |
+| id_lider           | INT           | YES          | FK   | NULL                   |                    |
+| sueldo             | DOUBLE        | YES          |      | NULL                   |                    |
+| banda              | ENUM('100','200','300')| YES | NULL           |                    |
 
-Esta vista muestra los clientes que tienen un saldo negativo en alguna de sus cuentas.
+### Tabla `evaluacion`
+| Campo              | Tipo          | Null | Key  | Default                | Extra             |
+|--------------------|---------------|------|------|------------------------|--------------------|
+| id_eval            | INT           | NO   | PK   | NULL                   |                    |
+| fecha_eval         | DATE          | NO   |      | NULL                   |                    |
+| resultado_evaluacion| INT          | NO   |      | NULL                   |                    |
+| id_empleado        | INT           | NO   | FK   | NULL                   |                    |
+| evaluado_por       | INT           | NO   |      | NULL                   |                    |
 
-Realiza una unión entre las tablas Clientes y Cuentas utilizando el campo Cliente_ID como clave de unión.
-Selecciona las columnas Cliente_ID, Nombre, Apellido y Saldo de las tablas Clientes y Cuentas.
-Filtra las filas donde el saldo en la tabla Cuentas es menor que cero, lo que indica que se trata de un saldo negativo.
-Utilidad:
+### Tabla `fichero`
+| Campo              | Tipo          | Null | Key  | Default                | Extra             |
+|--------------------|---------------|------|------|------------------------|--------------------|
+| id_fichero         | INT           | NO   | PK   | NULL                   | auto_increment     |
+| id_empleado        | INT           | YES  | FK   | NULL                   |                    |
+| fecha_hora_ingreso | DATETIME      | YES  |      | NULL                   |                    |
+| fecha_hora_egreso  | DATETIME      | YES  |      | NULL                   |                    |
 
-Esta vista es útil para identificar rápidamente a los clientes que están experimentando dificultades financieras debido a saldos negativos en sus cuentas. Puede ser utilizada por los departamentos de riesgo crediticio o de atención al cliente para tomar medidas correctivas o para ofrecer asistencia financiera adicional.
+### Tabla `rotacion`
+| Campo              | Tipo          | Null | Key  | Default                | Extra             |
+|--------------------|---------------|------|------|------------------------|--------------------|
+| id_baja            | INT           | NO   | PK   | NULL                   | auto_increment     |
+| id_empleado        | INT           | YES  | FK   | NULL                   |                    |
+| fecha_de_baja      | DATE          | YES  |      | NULL                   |                    |
 
-Ejemplo de consulta:
+### Tabla `ajustes`
+| Campo              | Tipo          | Null | Key  | Default                | Extra             |
+|--------------------|---------------|------|------|------------------------|--------------------|
+| id_sueldo          | INT           | NO   | PK   | NULL                   |                    |
+| id_empleado        | INT           | YES  | FK   | NULL                   |                    |
+| fecha_de_ajuste    | DATE          | YES  |      | NULL                   |                    |
+| observaciones      | VARCHAR(50)   | YES  |      | NULL                   |                    |
+| monto_usd          | INT           | NO   |      | NULL                   |                    |
+| monto_ars          | INT           | YES  |      | NULL                   |                    |
 
-SELECT * FROM VistaClientesSaldoNegativo
-ORDER BY Saldo ASC;
-VistaTransaccionesRecientes
-Descripción y tablas involucradas:
 
-Esta vista muestra las transacciones financieras realizadas en los últimos 30 días.
+---
 
-Selecciona las columnas Cuentas_ID, Tipo, Monto y Fecha de la tabla Transacciones.
-Filtra las filas donde la fecha de la transacción es igual o posterior a la fecha actual menos 30 días, utilizando la función DATE_SUB en conjunto con CURDATE()
-Utilidad:
+[<- volver al índice](#indice)
 
-Esta vista proporciona una forma conveniente de ver las transacciones financieras recientes, lo que puede ser útil para el seguimiento de la actividad financiera.
+---
 
-Ejemplo de consulta:
 
-SELECT * FROM VistaTransaccionesRecientes
-ORDER BY Fecha ASC;
-VistaTransaccionesMontosAltos
-Descripción y tablas involucradas:
+## Ingesta de Datos
 
-Esta vista muestra las transacciones financieras con montos superiores a $3.000
+* La ingesta de datos en las tablas se realizó por medio del archivo population.sql que se encuentra en la carpeta structure.
+---
 
-Selecciona las columnas Cuentas_ID, Tipo, Monto y Fecha de la tabla Transacciones.
-Filtra las filas donde el monto de la transacción sea mayor que $3.000.
-Utilidad:
 
-Esta vista puede ser útil para identificar transacciones inusuales o de gran valor, lo que podría requerir una mayor atención o verificación por parte de los analistas financieros.
+[<- volver al índice](#indice)
 
-Ejemplo de consulta:
+---
 
-SELECT * FROM VistaTransaccionesMontosAltos
-ORDER BY Monto DESC;
-VistaClientesHistorialCrediticioMalo
-Descripción y tablas involucradas:
+## Objetos de la Base de Datos
 
-Esta vista muestra los clientes cuyo historial crediticio es considerado malo, es decir, con un puntaje de crédito menor a 5 (cinco).
+Los objetos de la base de dajos se encuentran en la carpeta objects, con un archivo sql para cada tipo de objeto, a saber:
+- Funciones : funtions.sql
+- Triggers : triggers.sql
+- Prodecimientos almacenados : stored_procedures.sql
+- Vistas : views.sql
+- Roles, permisos y usuarios : roles_users.sql 
 
-Selecciona las columnas Cliente_ID, Nombre, Apellido y Puntaje de la tabla Clientes y la tabla Historial_Credito.
-Une las tablas Clientes e Historial_Credito usando el Cliente_ID.
-Filtra las filas donde el puntaje de crédito en el historial sea menor a 5.
-Utilidad:
+A continuación, se desarrolla la documentación de cada uno de ellos.
 
-Esta vista puede ser útil para identificar a los clientes que tienen un historial crediticio negativo, lo que podría influir en las decisiones de otorgamiento de nuevos créditos o préstamos.
+---
 
-Ejemplo de consulta:
 
-SELECT * FROM VistaClientesHistorialCrediticioMalo
-ORDER BY Puntaje DESC;
-VistaDetallePrestamosActivos
-Descripción y tablas involucradas:
+### Documentación de Funciones 
 
-Esta vista muestra los detalles de los préstamos que están actualmente activos.
+---
 
-Realiza una unión entre las tablas Prestamos y Clientes utilizando el campo Cliente_ID como clave de unión.
-Selecciona las columnas Prestamos_ID, Nombre (del cliente), Monto, TasaInteres, Plazo y Estado.
-Filtra las filas donde el estado del préstamo en la tabla Prestamos figura como "Activo".
-Utilidad:
+### Listado de funciones
 
-Esta vista es útil para obtener una lista de los préstamos activos y puede ser utilizada por los departamentos financieros para monitorear y administrar los préstamos en curso.
+Listado de Funciones
 
-Ejemplo de consulta:
+1. Función: premio_desempenio
 
-SELECT * FROM VistaDetallePrestamosActivos
-ORDER BY Cliente ASC;
-Documentación de Funciones
-FN_CalcularMontoTotalPagos
 Descripción:
+Esta función calcula el premio por desempeño para un empleado específico multiplicando el monto en USD por el porcentaje de premio proporcionado.
 
-Esta función calcula el monto total de los pagos asociados a un préstamo específico.
+Parámetros:
+p_id (INT): El ID del empleado.
+p_premio (FLOAT): El porcentaje del premio a aplicar.
 
-Parámetros y retorno:
+Valor Retornado:
+FLOAT: Retorna el valor del premio calculado.
 
-Toma un parámetro de entrada, que es el ID del préstamo (prestamoID).
-Dentro de la función, declara una variable montoTotal para almacenar el monto total de los pagos.
-Realiza una consulta para sumar todos los montos de los pagos asociados al ID del préstamo proporcionado.
-Utiliza la función COALESCE para asegurarse de que, en caso de que no haya pagos asociados, el resultado sea cero.
-Devuelve el monto total de los pagos.
-Utilidad:
+Ejemplo de Uso:
+SELECT premio_desempenio(123, 0.10) AS Premio;
 
-Esta función es útil para obtener de manera rápida y precisa el monto total de los pagos asociados a un préstamo específico, lo que puede ser utilizado en diversas partes del sistema para realizar cálculos y análisis relacionados con los préstamos.
+Muestra de Resultado:
+Antes de ejecutar la función:
+SELECT * FROM ajustes WHERE id_empleado = 123;
++-------------+----------+
+| id_empleado | monto_usd|
++-------------+----------+
+| 123         | 1000.00  |
++-------------+----------+
+
+ Después de ejecutar la función:
+SELECT premio_desempenio(123, 0.10) AS Premio;
++---------+
+| Premio  |
++---------+
+| 100.00  |
++---------+
+
+2. Función: monto_teletrabajo
+
+Descripción:
+Esta función calcula el monto destinado al teletrabajo para un empleado específico dividiendo el monto en USD por el factor de teletrabajo proporcionado.
+
+Parámetros:
+m_id (INT): El ID del empleado.
+m_teletrabajo (FLOAT): El factor de teletrabajo a aplicar.
+
+Valor Retornado:
+FLOAT: Retorna el valor del monto de teletrabajo calculado.
+
+Ejemplo de Uso:
+SELECT monto_teletrabajo(123, 2) AS MontoTeletrabajo;
+
+Muestra de Resultado:
+Antes de ejecutar la función:
+SELECT * FROM ajustes WHERE id_empleado = 123;
++-------------+----------+
+| id_empleado | monto_usd|
++-------------+----------+
+| 123         | 1000.00  |
++-------------+----------+
+
+Después de ejecutar la función:
+
+SELECT monto_teletrabajo(123, 2) AS MontoTeletrabajo;
++-----------------+
+| MontoTeletrabajo|
++-----------------+
+| 500.00          |
++-----------------+
+
+---
+
+### Función 1 : `fn_1_total_entradas`
+
+**Descripción:** 
+
+Esta función permite obtener la cantidad total de unidades de un producto que han ingresado al almacén. Se calcula sumando todas las entradas registradas en la tabla detalle_entradas. 
+
+Esta función es llamada en el trigger tr_actualizar_total_entradas.
+
+
+**Parámetros:**
+
+
+| Parámetro     | Descripción                               | 
+|-------------|-------------------------------------------|
+| id_prod | id del producto tipo INT                         | 
+
+
+
+**Retorno:**
+
+Valor entero con el resultado de la suma de todas las cantidades del producto identificado con el parámetro en la tabla detalle_entradas.
+
+**Ejemplo de uso:**
+Para el caso del id de producto 1, la consulta sería la siguiente:
+
+```sql
+SELECT fn_1_total_entradas(1);
+```
+
+**Muestra del resultado de la consulta:**
+
+![Consulta función 1](./images/funcion_1.png)
+
+
+---
+
+### Función 2 : `fn_2_total_salidas`
+
+**Descripción:** 
+
+Esta función permite obtener la cantidad total de unidades de un producto que han salido del almacén. Se calcula sumando todas las salidas registradas en la tabla detalle_salidas. 
+
+Esta función es llamada en el trigger tr_actualizar_total_salidas.
+
+
+**Parámetros:**
+
+
+| Parámetro     | Descripción                               | 
+|-------------|-------------------------------------------|
+| id_prod | id del producto tipo INT                         | 
+
+**Retorno:**
+
+Valor entero con el resultado de la suma de todas las cantidades del producto identificado con el parámetro en la tabla detalle_salidas.
+
+**Ejemplo de uso:**
+Para el caso del id de producto 1, la consulta sería la siguiente:
+
+```sql
+SELECT fn_2_total_salidas(1);
+```
+
+**Muestra del resultado de la consulta:**
+
+![Consulta función 2](./images/funcion_2.png)
+
+
+---
+
+### Función 3 : `fn_3_actualizar_ultimo_precio`
+
+**Descripción:** 
+
+Esta función permite actualizar el valor del último precio de un producto en la tabla inventario cuando se ingresa una entrada. 
+
+Esta función es llamada por el trigger tr_actualizar_ultimo_precio.
+
+
+**Parámetros:**
+
+| Parámetro     | Descripción                               | 
+|-------------|-------------------------------------------|
+| id_prod | id del producto tipo INT                         | 
+
+**Retorno:**
+
+Esta función retorna el precio del producto indicado como parámetro, el cual corresponde al registro de entrada más reciente.
+
+**Ejemplo de uso:**
+Para el caso del id de producto 1, la consulta sería la siguiente:
+
+```sql
+SELECT fn_3_actualizar_ultimo_precio(1);
+```
+
+**Muestra del resultado de la consulta:**
+
+![Consulta función 3](./images/funcion_3.png)
+
+
+---
+
+### Función 4 : `fn_4_valor_total_inventario`
+
+**Descripción:** 
+
+Esta función premite obtener el valor total del inventario. Para lo cual multiplica el stock y el precio de cada producto y los suma.
+
+Esta función es llamada en la vista vw_2_valor_inventario.
+
+**Parámetros:**
+
+Esta función no requiere parámetros.
+
+**Retorno:**
+
+Retorna el resulato del cálculo del valor total del inventario.
+
+**Ejemplo de uso:**
+
+```sql
+SELECT fn_4_valor_total_inventario();
+```
+
+**Muestra del resultado de la consulta:**
+
+![Consulta función 4](./images/funcion_4.png)
+
+---
+
+[<- volver al índice](#indice)
+
+---
+
+### Documentación de Triggers 
+
+---
+
+### Listado de triggers
+
+* Trigger 1 : tr_actualizar_total_entradas
+* Trigger 2 : tr_actualizar_total_salidas
+* Trigger 3 : tr_actualizar_ultimo_precio
+
+---
+
+### Trigger 1 : `tr_actualizar_total_entradas`
+
+**Descripción:** 
+
+Este trigger se ejecuta después que se inserta un registro en la tabla detalle_entradas actualizando el campo total_entradas en la tabla inventario por medio de la función fn_1_total_entradas.
+
+**Detalles:**
+
+* **Tabla afectada:** detalle_entradas
+* **Acción:** INSERT
+* **Información registrada:** valor actualizado de total_entradas en tabla inventarios
+
+**Ejemplo:**
+
+* Se inserta una nueva entrada en la tabla detalle_entradas.
+* El trigger calcula el nuevo valor del campo total_entradas mediante la funcion fn_1_total_entradas para el id correspondiente y actualiza la tabla inventario. 
+
+---
+
+### Trigger 2 : `tr_actualizar_total_salidas`
+
+**Descripción:** 
+
+Este trigger se ejecuta después que se inserta un registro en la tabla detalle_salidas actualizando el camapo total_salidas en la tabla inventario por medio de la función fn_2_total_salidas.
+
+**Detalles:**
+
+* **Tabla afectada:** detalle_salidas
+* **Acción:** INSERT
+* **Información registrada:** valor actualizado de total_salidas en tabla inventarios
+
+**Ejemplo:**
+
+* Se inserta una nueva salida en la tabla detalle_salidas.
+* El trigger calcula el nuevo valor del campo total_salidas mediante la funcion fn_2_total_salidas para el id correspondiente y actualiza la tabla inventario. 
+
+---
+
+### Trigger 3 : `tr_actualizar_ultimo_precio`
+
+**Descripción:** 
+
+Este trigger se ejecuta después que se inserta un registro en la tabla detalle_entradas actualizando el campo ultimo_precio_$ en la tabla inventario por medio de la función fn_3_actualizar_ultimo_precio.
+
+**Detalles:**
+
+* **Tabla afectada:** detalle_entradas
+* **Acción:** INSERT
+* **Información registrada:** valor actualizado de ultimo_precio_$ en tabla inventarios
+
+**Ejemplo:**
+
+* Se inserta una nueva entrada en la tabla detalle_entradas.
+* El trigger calcula el nuevo valor del campo ultimo_precio_$ mediante la funcion fn_3_actualizar_ultimo_precio para el id correspondiente y actualiza la tabla inventario. 
+
+---
+
+[<- volver al índice](#indice)
+
+---
+
+### Documentación de Procedimientos Almacenados
+
+---
+
+Procedimiento almacenado: sp_actualizacion_sueldos
+Descripción:
+Este procedimiento almacenado se encarga de calcular y mostrar información sobre el ajuste de sueldos de los empleados de acuerdo con la inflación y un bono especificados como parámetros.
+
+Parámetros:
+inflacion_ars (IN): Valor de inflación en ARS (pesos argentinos).
+bono_usd (IN): Valor del bono en USD (dólares estadounidenses).
+
+Retorno:
+Este procedimiento no tiene retorno, pero devuelve un conjunto de resultados con la información de los empleados y los ajustes de sueldos calculados.
 
 Ejemplo de uso:
+CALL sp_actualizacion_sueldos(1.05, 1.10);
+Este ejemplo llama al procedimiento sp_actualizacion_sueldos con una inflación del 5% y un bono del 10% en dólares.
 
-SELECT FN_CalcularMontoTotalPagos(1)
-AS     MontoTotalPago;
-FN_CalcularSaldoPromedioCliente
+Procedimiento almacenado: registrarevaluacion
 Descripción:
+Este procedimiento almacenado se encarga de registrar una evaluación realizada a un empleado en la tabla evaluacion.
 
-Esta función calcula el saldo promedio de todas las cuentas asociadas a un cliente específico.
+Parámetros:
+p_id_empleado (IN): ID del empleado al que se le realiza la evaluación.
+p_fecha_eval (IN): Fecha en la que se realizó la evaluación.
+p_resultado_evaluacion (IN): Resultado de la evaluación.
+p_evaluado_por (IN): ID de la persona que realizó la evaluación.
 
-Parámetros y retorno:
 
-Toma un parámetro de entrada, que es el ID del cliente (clienteID).
-Dentro de la función, declara una variable saldoPromedio para almacenar el saldo promedio.
-Realiza una consulta para obtener el saldo promedio de todas las cuentas asociadas al ID del cliente proporcionado.
-Utiliza la función COALESCE para asegurarse de que, en caso de que no haya cuentas asociadas, el resultado sea cero.
-Devuelve el saldo promedio de todas las cuentas asociadas al cliente.
-Utilidad:
+[<- volver al índice](#indice)
 
-Esta función es útil para obtener una medida del estado financiero promedio de un cliente, lo que puede ser utilizado en análisis y reportes relacionados con la gestión de clientes y cuentas.
+---
 
-Ejemplo de uso:
 
-SELECT FN_CalcularSaldoPromedioCliente(1)
-AS     SaldoPromedioCliente;
-FN_CalcularSaldoTotalPrestamos
-Descripción:
+## Roles, Permisos y Usuarios en MySQL
 
-Esta función calcula el saldo total de todos los préstamos activos asociados a un cliente específico.
+### Roles:
+1. **todos_los_permisos**: Este rol tiene todos los permisos posibles sobre la base de datos `rrhh_umami`.
+2. **solo_lectura**: Este rol tiene permisos de solo lectura sobre la base de datos `rrhh_umami`.
+3. **lectura_insercion**: Este rol tiene permisos de lectura e inserción sobre la base de datos `rrhh_umami`.
 
-Parámetros y retorno:
+### Permisos:
+- `ALL PRIVILEGES`: Concede todos los permisos posibles sobre la base de datos especificada.
+- `SELECT`: Concede el permiso de seleccionar datos de las tablas en la base de datos.
+- `INSERT`: Concede el permiso de insertar nuevos registros en las tablas de la base de datos.
 
-Toma un parámetro de entrada que es el ID del cliente (clienteID).
-Dentro de la función, declara una variable saldoTotal para almacenar el saldo total.
-Realiza una consulta para obtener la suma de los montos de todos los préstamos activos asociados al ID del cliente proporcionado.
-Utiliza la función COALESCE para asegurarse de que, en caso de que no haya préstamos activos asociados, el resultado sea cero.
-Devuelve el saldo total de todos los préstamos activos asociados al cliente.
-Utilidad:
+### Usuarios:
+1. `Jorge@%`: Usuario con nombre 'Jorge', con acceso desde cualquier host ('%'), identificado por la contraseña '111'. Este usuario tiene asignado el rol `todos_los_permisos`, lo que le otorga todos los permisos sobre la base de datos `rrhh_umami`.
+2. `Juan@%`: Usuario con nombre 'Juan', con acceso desde cualquier host ('%'), identificado por la contraseña '222'. Este usuario tiene asignado el rol `solo_lectura`, lo que le permite realizar consultas de solo lectura en la base de datos `rrhh_umami`.
+3. `Julian@%`: Usuario con nombre 'Julian', con acceso desde cualquier host ('%'), identificado por la contraseña '333'. Este usuario tiene asignado el rol `lectura_insercion`, lo que le permite realizar consultas de lectura e inserción en la base de datos `rrhh_umami`.
 
-Esta función es útil para calcular la carga financiera total de un cliente en términos de préstamos activos.
+Estos roles y permisos proporcionan un nivel de control de acceso a la base de datos, permitiendo asignar diferentes conjuntos de permisos a diferentes usuarios según sus necesidades y responsabilidades.
 
-Ejemplo de uso:
+---
 
-SELECT FN_CalcularSaldoTotalPrestamos(1)
-AS     SaldoTotalPrestamos;
-Documentación de Procedimientos Almacenados
-SP_ActualizarEstadoPrestamo
-Descripción:
+[<- volver al índice](#indice)
 
-Este procedimiento almacenado se encarga de actualizar el estado de un préstamo en la tabla Prestamos basado en su saldo pendiente.
+---
 
-Parámetros y retorno:
+## Backup de la Base de Datos
 
-El procedimiento toma como parámetro de entrada el ID del préstamo (prestamoID).
-Calcula el saldo pendiente del préstamo restando la suma total de los pagos asociados al mismo.
-Luego determina el nuevo estado del préstamo en función del saldo pendiente. Si el saldo pendiente es menor o igual a cero, el estado se establece como "Inactivo"; de lo contrario, se establece como "Activo".
-Finalmente, actualiza el estado del préstamo en la tabla Prestamos con el nuevo estado calculado.
-Utilidad:
+El backup generado es del tipo self-contained file y contiene estructura y datos. Los backups se almacenan en la carpeta backup.
 
-Este procedimiento almacenado es útil para automatizar la actualización del estado de los préstamos en función de sus pagos y saldos pendientes, lo que proporciona una gestión más eficiente y precisa de los préstamos en el sistema. Por esta razón, este procedimiento va de la mano con el que se desarrollará luego.
+También se puede generar un backup a través del comando `make backup-db` que permite ejecutar un backup de manera manual.
 
-Ejemplo de uso:
 
-CALL SP_ActualizarEstadoPrestamo(1);
-SP_RegistrarPagoPrestamo
-Descripción:
+---
 
-Este procedimiento almacenado se encarga de registrar un pago para un préstamo específico y luego llama al procedimiento SP_ActualizarEstadoPrestamo (que se ha detallado anteriormente) para actualizar el estado del préstamo, en el caso de que corresponda.
+[<- volver al índice](#indice)
 
-Parámetros y retorno:
+---
 
-Los parámetros de entrada son el ID del préstamo (prestamoID), el monto del pago (monto) y la fecha del pago (fecha).
-Inserta el nuevo pago del préstamo en la tabla Pagos_Prestamos con el ID del préstamo, el monto y la fecha proporcionados.
-Después de insertar el pago, llama al procedimiento almacenado SP_ActualizarEstadoPrestamo para actualizar el estado del préstamo en función de los pagos realizados.
-Utilidad:
+## Herramientas y Tecnologías Usadas
+* MySQL: motor de bases de datos, version 8.0.36
+* MySQL Workbench: interfaz gráfica, version 8.0.36
+* Microsoft Word, Excel, PowerPoint
+* Visual Studio Code: para desarrollar el documento README.md
+* Google Drive y Zoom: para ver el contenido de las clases
+* https://mockaroo.com/: para generar datos ficticios
+* https://www.tablesgenerator.com/: para transformar tablas de formato csv a markdown
+* Makefile: para generar una interfaz sencilla de procesos
+* Docker: para generar un container
+* GitHub: para entregar el proyecto
 
-Este procedimiento almacenado es útil para facilitar el registro de pagos para préstamos específicos y automatizar la actualización del estado del préstamo después de cada pago registrado. Esto garantiza una gestión eficiente y precisa de los pagos y estados de los préstamos en el sistema.
+---
 
-Ejemplo de uso:
+[<- volver al índice](#indice)
 
-CALL SP_RegistrarPagoPrestamo(6, 1646.25, CURDATE());
-Documentación de Triggers
-TR_ActualizarSaldoCuenta
-Descripción:
+---
 
-Este trigger se activa después de que se inserta una nueva fila en la tabla Transacciones. Su propósito principal es actualizar el saldo de la cuenta (de la tabla Cuentas) asociada a la transacción según el tipo de la misma.
+## Instrucciones para Levantar el Proyecto en CodeSpaces GitHub
 
-Detalles:
+* env : archivo con contraseñas y data secretas
+* Makefile : abstracción de creacción del proyecto
+* docker-compose.yml : permite generar las bases de datos en forma de contenedores
 
-Si la transacción es un retiro, el monto se resta del saldo actual de la cuenta. En cambio, si es otro tipo de transacción, el monto se suma al saldo de la cuenta.
+### Pasos para arrancar el proyecto
 
-Utilidad:
+* En la terminal de linux escribir :
+    - `make` _si da un error de que no conexion al socket, volver al correr el comando `make`_
+    - `make clean-db` limpia la base de datos
+    - `make test-db` para observar los datos de cada tabla
+    - `make backup-db` para realizar un backup de la base de datos
+    - `make access-db` para acceder a la base de datos
 
-Su implementación es importante para mantener la integridad de los datos en la tabla Cuentas y garantizar que el saldo se ajuste correctamente en función de las transacciones realizadas.
+---
 
-TR_ValidarDatosPrestamo
-Descripción:
+[<- volver al índice](#indice)
 
-Este trigger se activa antes de insertar una nueva fila en la tabla Prestamos. Su objetivo es validar los datos del préstamo antes de que se realice la inserción en la base de datos.
+---
 
-Detalles:
+## Formato de Entrega 
 
-Primero, verifica que el monto del préstamo sea mayor que cero. Si no es asi, se lanza una excepción con un mensaje indicando que el monto del préstamo debe ser mayor que cero.
-Luego, comprueba que la tasa de interés esté en el rango válido de 0 a 100. Si esto tampoco es asi, se lanza otra excepción con un mensaje que indica que la tasa de interés debe estar entre 0 y 100.
-Utilidad:
+El proyecto final de la base de datos control_inventario se entraga por medio de un link a un repositorio GitHub. el cual está conformado por las siguientes subcarpetas y archivos:
 
-Este trigger es fundamental para garantizar la integridad de los datos, evitando asi la inserción de datos incorrectos o inválidos.
+repositorio : coderhouse_sql_entrega_final
+    
+    subcarpeta backup:
+        backup_sql.sql
 
-TR_EliminarCliente
-Descripción:
+    
+    subcarpeta objects:
+        functions.sql
+        triggers.sql
+        stored_procedures.sql
+        views.sql
+        roles_users.sql    
+    
+    subcarpeta structure:
+        database_structure.sql
+        population.sql
 
-Este trigger se activa antes de que se elimine una fila de la tabla Clientes. Su objetivo es prevenir la eliminación de clientes mediante la generación de un error personalizado.
+    docker-compose.yml
+    env.txt
+    Makefile.txt
+    README.md
+    wait_docker.sh
 
-Detalles:
+---
 
-Cuando se intenta eliminar un cliente, el trigger se activa y genera un error personalizado con el mensaje "No se permite eliminar clientes". Este error detiene la ejecución de la operación de eliminación y garantiza que los clientes no sean eliminados de la base de datos.
+[<- volver al índice](#indice)
 
-Utilidad:
-
-Este trigger es útil para mantener la integridad de los datos y evitar la eliminación accidental o no autorizada de clientes en la base de datos.
-
-TR_CrearCuentaClienteNuevo
-Descripción:
-
-Este trigger se activa después de que se inserta una fila en la tabla Clientes. Su objetivo es crear automáticamente una nueva cuenta de ahorro en la tabla Cuentas para el cliente recién insertado.
-
-Detalles:
-
-Cuando se inserta un nuevo cliente, el trigger se activa y verifica si ya existen cuentas asociadas a ese cliente en la tabla Cuentas.
-Si no hay cuentas existentes para el cliente, el trigger genera un número de cuenta de 4 dígitos único y lo inserta en la tabla Cuentas, junto con el tipo de cuenta (Ahorro), un saldo inicial de 0 (cero) y la fecha de apertura (la fecha actual).
-El trigger garantiza que el número de cuenta generado sea único mediante la generación repetida de un nuevo número hasta que encuentre uno que no esté presente en la tabla de Cuentas.
-Utilidad:
-
-El trigger en cuestión es útil para automatizar el proceso de creación de cuentas de ahorro para nuevos clientes y garantizar que cada nuevo cliente tenga su cuenta de ahorro asociada en la base de datos de la institución financiera.
-
-Roles y permisos
-Se generan tres roles en el archivo roles_users.sql:
-
-role_select_tablas: Este rol tiene permisos solo para SELECT en las distintas tablas de la base de datos.
-role_crud_creditico: Este rol tiene permisos para generar CRUD en distintas tablas de la base de datos.
-role_creacion_usuarios: Este rol tiene permisos para crear y eliminar usuarios.
-Por último, se crearon tres usuarios y se les asignaron los roles correspondientes.
-
-Back up de la base de datos
-Se ha añadido un script del backup de la base de datos desarrollada en este proyecto.
-
-Adicionalmente se puede generar el comando make backup-db en CodeSpaces, el cual permite ejecutar un backup de la base de datos de manera manual.
-
-Glosario
-Se ha incluido un glosario para ayudar a comprender los términos y conceptos específicos del proyecto.
-
-Funcionalidad del Glosario
-Definiciones Claras: Proporciona definiciones de términos técnicos.
-Rápida Accesibilidad: Estructurado con un índice y de manera alfabética para facilitar la búsqueda.
-Herramientas y tecnologias usadas
-Makefile (Para generar una interfaz sencilla de procesos)
-Docker (Para generar un container)
-MySQL (Motor de bases de datos version: latest)
-MySQL Workbench (Interfaz grafica)
-Mockaroo (Para generar datos ficticios)
-Canva (Para diseñar las imágenes de portada presentes en el repositorio)
-Draw.io (Para crear el diagrama entidad-relación)
-Como levantar el proyecto en CodeSpaces GitHub
-env: Archivo con contraseñas y data secretas.
-Makefile: Abstracción de creacción del proyecto.
-docker-compose.yml: Permite generar la bases de datos en forma de contenedores.
-Pasos para arrancar el proyecto
-En la terminal de linux escribir :
-make En caso de que genere el error de que no existe conexion al socket, volver al correr el comando make.
-make clean-db Para limpiar la base de datos.
-make test-db Para mirar los datos de cada tabla.
-make backup-db Para realizar un backup de la base de datos.
-make access-db Para acceder a la base de datos.
+---
